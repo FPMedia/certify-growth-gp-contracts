@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://certify-growth.dev/schemas/events/submission-completed.json",
+  "title": "SubmissionCompleted",
+  "type": "object",
+  "required": ["event", "submission_id", "user_id", "questionnaire_id", "occurred_at"],
+  "additionalProperties": false,
+  "properties": {
+    "event": { "const": "submission.completed" },
+    "submission_id": { "type": "integer" },
+    "user_id": { "type": "integer" },
+    "questionnaire_id": { "type": "integer" },
+    "occurred_at": { "type": "string", "format": "date-time" }
+  }
+}

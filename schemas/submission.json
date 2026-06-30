@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://certify-growth.dev/schemas/submission.json",
+  "title": "Submission",
+  "type": "object",
+  "required": ["id", "user_id", "questionnaire_id", "status", "answers"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "integer" },
+    "user_id": { "type": "integer" },
+    "questionnaire_id": { "type": "integer" },
+    "status": { "type": "integer", "minimum": 0, "maximum": 3 },
+    "answers": { "$ref": "#/$defs/AnswersMap" },
+    "reports": {
+      "type": "object",
+      "additionalProperties": { "$ref": "report-document.json" }
+    },
+    "reports_compiled_at": { "type": "string", "format": "date-time" },
+    "config_version": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "AnswersMap": {
+      "type": "object",
+      "additionalProperties": { "type": "number" }
+    }
+  }
+}

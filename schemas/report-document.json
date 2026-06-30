@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://certify-growth.dev/schemas/report-document.json",
+  "title": "ReportDocument",
+  "description": "Compiled report cached on submission. Display services read only — never recalculate.",
+  "type": "object",
+  "required": ["id", "context", "context_id", "questionnaire_id", "generated_at", "metadata", "copy", "scores", "elements"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "context": {
+      "type": "string",
+      "enum": ["individual", "team", "leadershipteam", "company", "demo"]
+    },
+    "context_id": { "type": "integer" },
+    "questionnaire_id": { "type": "integer" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "config_version": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "required": ["title", "label", "pronoun"],
+      "properties": {
+        "title": { "type": "string" },
+        "label": { "type": "string" },
+        "pronoun": { "type": "string" },
+        "is_demo": { "type": "boolean" },
+        "member_count": { "type": "integer" }
+      }
+    },
+    "copy": { "type": "object" },
+    "scores": {
+      "type": "object",
+      "required": ["em_score", "gp_score", "target_score", "score_text", "compare_score_text"],
+      "properties": {
+        "em_score": { "type": "number" },
+        "gp_score": { "type": "number" },
+        "customer_score": { "type": "number" },
+        "target_score": { "type": "number" },
+        "score_text": { "type": "string" },
+        "compare_score_text": { "type": "string" }
+      }
+    },
+    "elements": {
+      "type": "array",
+      "items": { "$ref": "score-result.json#/$defs/ScoredElement" }
+    },
+    "comparison": { "type": "object" },
+    "graph_config": { "type": "object" },
+    "permissions": { "type": "object" }
+  }
+}

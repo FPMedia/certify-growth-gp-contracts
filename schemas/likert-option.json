@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://certify-growth.dev/schemas/likert-option.json",
+  "title": "LikertOption",
+  "type": "object",
+  "required": ["value", "label"],
+  "additionalProperties": false,
+  "properties": {
+    "value": {
+      "type": "number",
+      "description": "Precomputed weighted score. Stored statically at admin save time."
+    },
+    "label": {
+      "type": "string",
+      "enum": ["Never", "Rarely", "Sometimes", "Often", "Always"]
+    }
+  }
+}

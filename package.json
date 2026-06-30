@@ -1,0 +1,15 @@
+{
+  "name": "@gp/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "types": "./ts/index.ts",
+  "exports": {
+    ".": {
+      "types": "./ts/index.ts"
+    }
+  },
+  "scripts": {
+    "validate": "node scripts/validate-schemas.cjs"
+  }
+}

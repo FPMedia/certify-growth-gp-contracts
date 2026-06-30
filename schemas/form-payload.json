@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://certify-growth.dev/schemas/form-payload.json",
+  "title": "FormPayload",
+  "description": "Static questionnaire form for one group. Option values are precomputed at admin save time.",
+  "type": "object",
+  "required": ["questionnaire_id", "group_id", "version", "scale_labels", "elements"],
+  "additionalProperties": false,
+  "properties": {
+    "questionnaire_id": { "type": "integer" },
+    "group_id": { "type": "integer", "minimum": 1, "maximum": 3 },
+    "version": { "type": "string" },
+    "built_at": { "type": "string", "format": "date-time" },
+    "scale_labels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 5,
+      "maxItems": 5
+    },
+    "elements": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/FormElement" }
+    }
+  },
+  "$defs": {
+    "FormElement": {
+      "type": "object",
+      "required": ["id", "name", "questions"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "questions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/FormQuestion" }
+        }
+      }
+    },
+    "FormQuestion": {
+      "type": "object",
+      "required": ["id", "label", "options"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "integer" },
+        "label": { "type": "string" },
+        "options": {
+          "type": "array",
+          "items": { "$ref": "likert-option.json" },
+          "minItems": 5,
+          "maxItems": 5
+        }
+      }
+    }
+  }
+}

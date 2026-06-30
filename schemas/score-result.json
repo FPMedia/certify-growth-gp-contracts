@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://certify-growth.dev/schemas/score-result.json",
+  "title": "ScoreResult",
+  "type": "object",
+  "required": ["em_score", "elements", "group_scores", "weightings_applied"],
+  "additionalProperties": false,
+  "properties": {
+    "em_score": { "type": "number" },
+    "gp_score": { "type": "number" },
+    "customer_score": { "type": "number" },
+    "elements": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ScoredElement" }
+    },
+    "group_scores": {
+      "type": "object",
+      "properties": {
+        "1": { "type": "number" },
+        "2": { "type": "number" },
+        "3": { "type": "number" }
+      }
+    },
+    "weightings_applied": {
+      "type": "object",
+      "required": ["wtg_2", "wtg_3"],
+      "properties": {
+        "wtg_2": { "type": "number" },
+        "wtg_3": { "type": "number" }
+      }
+    }
+  },
+  "$defs": {
+    "ScoredElement": {
+      "type": "object",
+      "required": ["id", "name", "group_id", "score", "weighted_score", "questions", "paragraph"],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "group_id": { "type": "integer" },
+        "score": { "type": "number" },
+        "weighted_score": { "type": "number" },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "score", "weighting"],
+            "properties": {
+              "id": { "type": "integer" },
+              "score": { "type": "number" },
+              "weighting": { "type": "number" }
+            }
+          }
+        },
+        "paragraph": { "type": "string" }
+      }
+    }
+  }
+}
