@@ -99,7 +99,7 @@ export interface ReportDocument {
     compare_score_text: string;
   };
   elements: ScoredElement[];
-  comparison?: { team_elements?: ScoredElement[] };
+  comparison?: { compare_elements?: ScoredElement[]; team_elements?: ScoredElement[] };
   graph_config?: Record<string, boolean>;
   permissions?: Record<string, boolean>;
 }
