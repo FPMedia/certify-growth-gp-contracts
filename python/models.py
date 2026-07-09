@@ -6,7 +6,7 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 
-ReportContext = Literal['individual', 'team', 'leadershipteam', 'company', 'demo']
+ReportContext = Literal['individual', 'team', 'leadershipteam', 'company']
 
 
 class ScoredQuestion(BaseModel):

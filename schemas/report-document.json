@@ -10,7 +10,7 @@
     "id": { "type": "string", "format": "uuid" },
     "context": {
       "type": "string",
-      "enum": ["individual", "team", "leadershipteam", "company", "demo"]
+      "enum": ["individual", "team", "leadershipteam", "company"]
     },
     "context_id": { "type": "integer" },
     "questionnaire_id": { "type": "integer" },
@@ -23,7 +23,6 @@
         "title": { "type": "string" },
         "label": { "type": "string" },
         "pronoun": { "type": "string" },
-        "is_demo": { "type": "boolean" },
         "member_count": { "type": "integer" }
       }
     },

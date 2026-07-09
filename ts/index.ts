@@ -6,8 +6,7 @@ export type ReportContext =
   | 'individual'
   | 'team'
   | 'leadershipteam'
-  | 'company'
-  | 'demo';
+  | 'company';
 
 export interface LikertOption {
   value: number;
@@ -86,7 +85,6 @@ export interface ReportDocument {
     title: string;
     label: string;
     pronoun: string;
-    is_demo?: boolean;
     member_count?: number;
   };
   copy: Record<string, unknown>;
